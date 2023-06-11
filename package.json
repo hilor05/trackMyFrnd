@@ -1,0 +1,25 @@
+{
+  "name": "trackmyfrnd",
+  "version": "1.0.0",
+  "description": "This will notify user about frnds in their vicinity",
+  "main": "index.js",
+  "scripts": {
+    "test": "test index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "trackmyfrnd"
+  },
+  "keywords": [
+    "location",
+    "based",
+    "tracking"
+  ],
+  "author": "hjain & asomya",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "require": "^2.4.20"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login/Register Page</title>
+  <link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login/Register</h1>
+    <div id="loginForm">
+      <h2>Login</h2>
+      <form>
+        <div>
+          <label for="loginUsername">Username</label>
+          <input type="text" id="loginUsername" name="loginUsername" required>
+        </div>
+        <div>
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="loginPassword" required>
+        </div>
+        <div>
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+    </div>
+    <div id="registerForm">
+      <h2>Register</h2>
+      <form>
+        <div>
+          <label for="registerUsername">Username</label>
+          <input type="text" id="registerUsername" name="registerUsername" required>
+        </div>
+        <div>
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" name="registerPassword" required>
+        </div>
+        <div>
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="../ts/login.js"></script>
+</body>
+</html>
