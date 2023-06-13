@@ -1,0 +1,13 @@
+name: trackmyfrnd
+language: nodejs
+env:
+  NODE_ENV: production
+  PORT: 3000
+build:
+  commands:
+    - npm ci
+deployment:
+  branches:
+    main:
+      commands:
+        - node server.js
