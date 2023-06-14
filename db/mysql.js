@@ -1,31 +1,32 @@
-const mysql = require('mysql2');
-const { createPool } = require('mysql2');
+const mysql = require('mysql2/promise');
 const config = require('config');
 
-const createMysqlConn = ()=>{
-    console.log("connecting to mysql");
-    try {
-        const pool = mysql.createPool({
-            host: config.host,        
-            user: config.user,     
-            password: config.password,
-            database: config.database,
-            connectionLimit: config.connectionLimit,
-        }).promise();
-    } catch(err) {
-        console.log(err);
-    }
-      return pool;    
+const createMysqlConn = async () => {
+  console.log("Connecting to MySQL...");
+  let pool;
+  try {
+    pool = await mysql.createPool({
+      host: config.get('host'),
+      user: config.get('user'),
+      password: config.get('password'),
+      database: config.get('database'),
+      connectionLimit: config.get('connectionLimit'),
+    });
+  } catch (err) {
+    console.log(err);
+  }
+  return pool;
 };
-const pool =  createMysqlConn();
-exports.execQuery = async(query, params) => {
-    try{
-        const result = await pool.query(query, params);
-    } catch(err) {
-        console.log(err);    
-    }
-    return result;
-}  
 
-  
-  
+const poolPromise = createMysqlConn();
+
+exports.execQuery = async (query, params) => {
+  try {
+    const pool = await poolPromise;
+    const [rows, fields] = await pool.execute(query, params);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
