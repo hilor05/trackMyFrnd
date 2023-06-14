@@ -1,10 +1,8 @@
 {
-    "database": {
-      "host": "containers-us-west-123.railway.app",
-      "user": "root",
-      "password": "57dRrUIfFr32bMKhBZ0L",
-      "databaseName": "railway",
-      "connectionLimit" : 10
-    }
-  }
+    "host": "containers-us-west-123.railway.app",
+    "user": "root",
+    "password": "57dRrUIfFr32bMKhBZ0L",
+    "databaseName": "railway",
+    "connectionLimit" : 10
+}
   
