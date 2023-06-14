@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 const { createPool } = require('mysql2');
 const config = require('config');
 
-exports.createMysqlConn = ()=>{
+const createMysqlConn = ()=>{
     console.log("connecting to mysql");
     try {
         const pool = mysql.createPool({
