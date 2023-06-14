@@ -2,6 +2,7 @@ const express = require('express');
 const port = process.env.PORT || 3000;
 const index= require('./index');
 const app = express();
+const {execQuery} = require('./db/mysql');
 app.set('view engine', 'ejs');
 // const server = http.createServer((req, res) => {
 //     // Set the response header
@@ -17,6 +18,7 @@ app.get('/login', (req, res, next)=>{
     res.render('../html/login');
 });
 app.get('/renderMap', (req, res, next)=>{
+  execQuery('insert into users values (2, "", "", "", "", 0, 0);');
   res.render('../html/map');
 });
 

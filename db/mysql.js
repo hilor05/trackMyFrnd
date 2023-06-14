@@ -17,7 +17,7 @@ exports.createMysqlConn = ()=>{
     }
       return pool;    
 };
-
+const pool =  createMysqlConn();
 exports.execQuery = async(query, params) => {
     try{
         const result = await pool.query(query, params);
