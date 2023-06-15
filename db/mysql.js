@@ -19,11 +19,10 @@ const createMysqlConn = async () => {
 };
 
 const poolPromise = createMysqlConn();
-
+console.log(poolPromise);
 exports.execQuery = async (query, params) => {
   try {
-    const pool = await poolPromise;
-    const conn = await pool.getConnection();
+    const conn = await poolPromise.getConnection();
     console.log("got conn");
     const res = await conn.query(query);
     console.log("result", res);
