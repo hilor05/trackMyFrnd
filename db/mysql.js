@@ -4,7 +4,6 @@ const config = require('config');
 const createMysqlConn = async () => {
   console.log("Connecting to MySQL...");
   let pool;
-  console.log(config.get('host'), config.get('user'), config.get('password'), config.get('database'), config.get('connectionLimit'));
   try {
     pool = await mysql.createPool({
       host: config.get('host'),
@@ -24,8 +23,13 @@ const poolPromise = createMysqlConn();
 exports.execQuery = async (query, params) => {
   try {
     const pool = await poolPromise;
-    const [rows, fields] = await pool.execute(query, params);
-    return rows;
+    const conn = await pool.getConnection();
+    console.log("got conn");
+    const res = await conn.query(query);
+    console.log("result", res);
+    //const [rows, fields] = await pool.query(query, params);
+    await conn.release();
+    console.log("conn released");
   } catch (err) {
     console.log(err);
     throw err;
