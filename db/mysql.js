@@ -4,6 +4,7 @@ const config = require('config');
 const createMysqlConn = async () => {
   console.log("Connecting to MySQL...");
   let pool;
+  console.log(config.get('host'), config.get('user'), config.get('password'), config.get('database'), config.get('connectionLimit'));
   try {
     pool = await mysql.createPool({
       host: config.get('host'),
